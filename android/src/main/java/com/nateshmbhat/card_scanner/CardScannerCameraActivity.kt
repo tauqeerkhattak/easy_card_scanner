@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -41,6 +42,7 @@ class CardScannerCameraActivity : AppCompatActivity() {
   private lateinit var cameraExecutor: ExecutorService
   lateinit var animator: ObjectAnimator
   lateinit var scannerLayout: View
+  lateinit var textView: TextView
   lateinit var scannerBar: View
   lateinit var backButton: View
 
@@ -49,6 +51,9 @@ class CardScannerCameraActivity : AppCompatActivity() {
     setContentView(R.layout.card_scanner_camera_activity)
     cardScannerOptions = intent.getParcelableExtra<CardScannerOptions>(CARD_SCAN_OPTIONS)
 
+    textView = findViewById(R.id.side)
+    val sideData = "Please Scan Your Valid Emirates ID\n - ${cardScannerOptions?.side}"
+    textView.text =  sideData
     scannerLayout = findViewById(R.id.scannerLayout)
     scannerBar = findViewById(R.id.scannerBar)
 //    backButton = findViewById(R.id.backButton)

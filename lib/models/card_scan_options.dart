@@ -3,6 +3,8 @@
 enum CardHolderNameScanPosition { aboveCardNumber, belowCardNumber }
 
 class CardScanOptions {
+  ///The card side to scan
+  final String side;
   final bool scanExpiryDate;
   final bool scanCardHolderName;
 
@@ -41,7 +43,8 @@ class CardScanOptions {
   final List<CardHolderNameScanPosition> possibleCardHolderNamePositions;
 
   const CardScanOptions(
-      {this.scanExpiryDate = true,
+      {required this.side,
+      this.scanExpiryDate = true,
       this.scanCardHolderName = false,
       this.initialScansToDrop = 1,
       this.validCardsToScanBeforeFinishingScan = 6,

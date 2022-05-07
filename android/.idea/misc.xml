@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Fattani computers/StudioProjects/plugins/easy_card_scanner/android/src/main/res/drawable/ic_scan_border.xml" value="0.2375" />
+        <entry key="..\:/Users/Fattani computers/StudioProjects/plugins/easy_card_scanner/android/src/main/res/drawable/layout_background.xml" value="0.2375" />
+        <entry key="..\:/Users/Fattani computers/StudioProjects/plugins/easy_card_scanner/android/src/main/res/layout/card_scanner_camera_activity.xml" value="0.3546875" />
         <entry key="src/main/res/layout/card_scanner_camera_activity.xml" value="0.18" />
       </map>
     </option>

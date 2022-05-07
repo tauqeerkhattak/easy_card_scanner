@@ -9,6 +9,7 @@ data class CardScannerOptions(
         val scanExpiryDate: Boolean,
         val scanCardHolderName: Boolean,
         val initialScansToDrop: Int,
+        val side: String?,
         val validCardsToScanBeforeFinishingScan: Int,
         val cardHolderNameBlackListedWords: List<String>,
         val considerPastDatesInExpiryDateScan: Boolean,
@@ -23,6 +24,7 @@ data class CardScannerOptions(
           parcel.readByte() != 0.toByte(),
           parcel.readByte() != 0.toByte(),
           initialScansToDrop = parcel.readInt(),
+          side = parcel.readString(),
           validCardsToScanBeforeFinishingScan = parcel.readInt(),
           cardHolderNameBlackListedWords = parcel.createStringArrayList() as List<String>,
           considerPastDatesInExpiryDateScan = parcel.readByte() != 0.toByte(),
@@ -37,6 +39,7 @@ data class CardScannerOptions(
           scanExpiryDate = configMap[ParcelKeys.scanExpiryDate.value]?.toBoolean() ?: true,
           scanCardHolderName = configMap[ParcelKeys.scanCardHolderName.value]?.toBoolean() ?: false,
           initialScansToDrop = configMap[ParcelKeys.initialScansToDrop.value]?.toInt() ?: 1,
+          side = configMap[ParcelKeys.side.value]?.toString() ?: "Front",
           validCardsToScanBeforeFinishingScan = configMap[ParcelKeys.validCardsToScanBeforeFinishingScan.value]?.toInt()
                   ?: 11,
           cardHolderNameBlackListedWords = configMap[ParcelKeys.cardHolderNameBlackListedWords.value]?.split(',')
@@ -56,6 +59,7 @@ data class CardScannerOptions(
     parcel.writeByte(if (scanExpiryDate) 1 else 0)
     parcel.writeByte(if (scanCardHolderName) 1 else 0)
     parcel.writeInt(initialScansToDrop)
+      parcel.writeString(side)
     parcel.writeInt(validCardsToScanBeforeFinishingScan)
     parcel.writeStringList(cardHolderNameBlackListedWords)
     parcel.writeByte(if (considerPastDatesInExpiryDateScan) 1 else 0)
@@ -76,6 +80,7 @@ data class CardScannerOptions(
       scanExpiryDate("scanExpiryDate"),
       scanCardHolderName("scanCardHolderName"),
       initialScansToDrop("initialScansToDrop"),
+        side("side"),
       validCardsToScanBeforeFinishingScan("validCardsToScanBeforeFinishingScan"),
       cardHolderNameBlackListedWords("cardHolderNameBlackListedWords"),
       considerPastDatesInExpiryDateScan("considerPastDatesInExpiryDateScan"),

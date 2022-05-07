@@ -3,6 +3,7 @@ package com.nateshmbhat.card_scanner;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
